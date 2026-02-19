@@ -1,0 +1,65 @@
+# Production-Grade AI Trading System Configuration
+
+# API Keys and Credentials
+api:
+  binance:
+    api_key: ${BINANCE_API_KEY}
+    api_secret: ${BINANCE_API_SECRET}
+    testnet: false
+  openai:
+    api_key: ${OPENAI_API_KEY}
+    model: gpt-4
+
+# Trading Parameters
+trading:
+  symbols:
+    - BTC/USDT
+    - ETH/USDT
+  timeframe: 1h
+  max_position_size: 0.1  # 10% of portfolio per trade
+  stop_loss_percent: 2.0
+  take_profit_percent: 5.0
+
+# Model Parameters
+model:
+  lstm:
+    lookback_window: 100
+    units: [128, 64, 32]
+    dropout: 0.2
+    epochs: 50
+    batch_size: 32
+  indicators:
+    rsi_period: 14
+    macd_fast: 12
+    macd_slow: 26
+    macd_signal: 9
+    bb_period: 20
+    bb_std: 2.0
+
+# Backtesting
+backtest:
+  start_date: '2023-01-01'
+  end_date: '2024-01-01'
+  initial_capital: 10000
+  commission: 0.001
+  slippage: 0.0005
+
+# Risk Management
+risk:
+  max_daily_loss: 0.05  # 5% daily loss limit
+  max_position_correlation: 0.7
+  portfolio_volatility_limit: 0.02
+  max_leverage: 1.0  # No leverage
+
+# Dashboard
+dashboard:
+  host: 0.0.0.0
+  port: 8050
+  debug: false
+
+# Logging
+logging:
+  level: INFO
+  file: logs/trading.log
+  max_size: 10485760  # 10MB
+  backup_count: 5
